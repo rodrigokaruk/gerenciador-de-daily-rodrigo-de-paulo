@@ -1,0 +1,20 @@
+= link_to 'Cadastrar nova pessoa', new_pessoa_path
+
+%br
+%br
+%table
+	%tr
+		%td
+			%strong Id
+		%td
+			%strong Nome
+		%td
+			%strong Nascimento
+	- @pessoas.each do |pessoa|
+		%tr
+			%td
+				= pessoa.id
+			%td
+				= pessoa.nome
+			%td
+				= pessoa.nascimento	

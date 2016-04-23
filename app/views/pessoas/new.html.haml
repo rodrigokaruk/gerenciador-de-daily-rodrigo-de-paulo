@@ -1,0 +1,9 @@
+%h1 Nova Pessoa
+= form_for @pessoa do |c|
+  = c.label "Nome: "
+  = c.text_field :nome
+  %br/
+  = c.label "Nacimento: "
+  = c.date_select :nascimento, start_year: 1940
+  %br/
+  = c.submit 'Salvar'
