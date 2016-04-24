@@ -1,3 +1,4 @@
 class Grupo < ActiveRecord::Base
-	has_many :pessoas
+	has_one :pessoas
+	has_one :integrantes
 end

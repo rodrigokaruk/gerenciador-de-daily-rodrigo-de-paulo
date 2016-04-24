@@ -29,10 +29,10 @@ class PessoasController < ApplicationController
 		pessoa = Pessoa.find(params[:id])
 
 		if pessoa.destroy
-			flash[:notice] = "Pessoa deletada"
+			flash[:notice] = "Removido com sucesso"
 			redirect_to pessoas_path
 		else
-			flash[:error] = "Erro ao deletar pessoa!"
+			flash[:error] = "Erro ao remover pessoa!"
 			redirect_to pessoas_path
 		end
 	end

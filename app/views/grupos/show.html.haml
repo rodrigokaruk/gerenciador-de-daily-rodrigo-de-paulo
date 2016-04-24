@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @grupo.name
+%p
+  %strong Lider:
+  = Pessoa.find(@grupo.lider).nome
+= link_to 'Edit', edit_grupo_path(@grupo)
+|
+= link_to 'Back', grupos_path

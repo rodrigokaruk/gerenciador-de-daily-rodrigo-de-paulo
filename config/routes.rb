@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :integrantes
   root 'pages#home'
 
   get "pessoas" => "pessoas#index", as: :pessoas
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get "sobre" => "pages#sobre", as: :sobre
 
   resources :pessoas
+  resources :grupos
 
   # GET
   # POST

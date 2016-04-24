@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
   
   def home
+  	@integrantes = Integrante.all
   end
 
   def about

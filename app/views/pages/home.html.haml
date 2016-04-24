@@ -1,1 +1,17 @@
-%h1 HOME#PAGE
+%h1 Grupos
+%table
+  %thead
+    %tr
+      %th Grupo
+      %th Lider
+      %th Membros
+  %tbody
+    - @integrantes.each do |integrante|
+      %tr
+        %td 
+          = Grupo.find(integrante.grupo_id).name
+        %td 
+          = Pessoa.find(Grupo.find(integrante.grupo_id).lider).nome
+        %td 
+          = integrante.membros
+%br
