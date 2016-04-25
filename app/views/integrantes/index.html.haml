@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Gerenciar Grupo
+%table
+  %thead
+    %tr
+      %th Grupo
+      %th Lider
+      %th Membros
+      %th{:colspan => "3"}
+  %tbody
+    - @integrantes.each do |integrante|
+      %tr
+        %td= @grupos.find(integrante.grupo_id).name
+        %td= @pessoas.find(@grupos.find(integrante.grupo_id).lider).nome
+        %td= integrante.membros
+        %td= link_to 'Ver', integrante
+        %td= link_to 'Editar', edit_integrante_path(integrante)
+%br/

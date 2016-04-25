@@ -1,0 +1,53 @@
+= simple_form_for @formulatio do |f|
+  - if @formulatio.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@formulatio.errors.count, "error")} prohibited this formulatio from being saved:"
+      %ul
+        - @formulatio.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :pessoa_id
+    = ':'
+    = f.collection_select(:pessoa_id, Pessoa.all, :id, :nome, prompt: true)
+  .field
+    = f.label :tipo
+    = ':'
+    = f.select :tipo, ["entrada", "saida"]
+  .field
+    = f.label "O que pretende fazer hoje? Ha algum impedimento?", class: "hidden", id: "label_pergunta_entrada"
+    = f.label "O voce realizou hoje? Houve algum impedimento?,", class: "hidden", id: "label_pergunta_saida"
+    %br
+    = f.text_area :conteudo
+    
+  .actions
+    = f.submit 'Salvar'
+
+:javascript
+  if (!String.prototype.contains) {
+    String.prototype.contains = function(s) {
+        return this.indexOf(s) > -1
+    }
+  }
+
+  $(function(){
+    change();
+    $("#formulatio_tipo")[0].setAttribute("onchange", "change();")
+  })
+
+  var change = function() {
+    var lblPerguntaEntrada = $("#label_pergunta_entrada")[0];
+    var lblPerguntaSaida = $("#label_pergunta_saida")[0];
+    var tipo = $("#formulatio_tipo")[0].value;
+    if(tipo == "entrada"){
+      lblPerguntaEntrada.setAttribute("class", lblPerguntaEntrada.getAttribute("class").replace(" hidden", ""));
+      if(!lblPerguntaSaida.getAttribute("class").contains("hidden")){
+        lblPerguntaSaida.setAttribute("class", lblPerguntaSaida.getAttribute("class") + " hidden");
+      }
+    }else{
+      lblPerguntaSaida.setAttribute("class", lblPerguntaSaida.getAttribute("class").replace(" hidden", ""));
+      if(!lblPerguntaEntrada.getAttribute("class").contains("hidden")){
+        lblPerguntaEntrada.setAttribute("class", lblPerguntaEntrada.getAttribute("class") + " hidden");
+      }
+    }
+  };

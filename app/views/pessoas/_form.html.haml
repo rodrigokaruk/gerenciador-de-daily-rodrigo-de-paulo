@@ -1,0 +1,11 @@
+= simple_form_for(@pessoa) do |f|
+  .field
+    = f.label :nome
+    %br/
+    = f.text_field :nome
+  .field
+    = f.label :nascimento
+    %br/
+    = f.date_select :nascimento, start_year: 1940, end_year: 2030
+  .actions
+    = f.submit

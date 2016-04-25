@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Pessoa:
+  = Pessoa.find(@formulatio.pessoa_id).nome
+%p
+  %b Tipo:
+  = @formulatio.tipo
+%p
+  %b Conteudo:
+  %br
+  = @formulatio.conteudo
+
+= link_to 'Editar', edit_formulatio_path(@formulatio)
+\|
+= link_to 'Voltar', formulatios_path

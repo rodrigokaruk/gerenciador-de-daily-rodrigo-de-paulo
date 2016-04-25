@@ -19,4 +19,4 @@
 			%td
 				= pessoa.nascimento
 			%td
-				= link_to 'remover', pessoa, method: :delete, data: { confirm: 'tem certeza?' }
+				= link_to 'Editar', edit_pessoa_path(pessoa)

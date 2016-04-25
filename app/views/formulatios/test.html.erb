@@ -1,0 +1,19 @@
+<%= f.input :ration_card ,as: :radio_buttons,collection: ["Yes","No"], wrapper_html: {id: "rationcard"} %>
+<%= f.input :rationcardNum , label: "Ration Card No." ,wrapper_html: {id: "rationcard_no"} %>
+
+
+$(function(){
+    var toggle_rationcardNum = function(visible) {
+        if (visible){
+            $("#rationcard_no").show();
+        } else {
+            $("#rationcard_no").hide();
+        }
+    }
+
+    $("#rationcard input").change(function(){
+        toggle_rationcardNum($(this).val()=="Yes")
+    })
+
+    toggle_rationcardNum($("#rationcard input:checked").val()=="Yes")
+})();  

@@ -1,0 +1,23 @@
+%h1 Formularios
+
+%table
+  %thead
+    %tr
+      %th Pessoa
+      %th Tipo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @formulatios.each do |formulatio|
+      %tr
+        %td= Pessoa.find(formulatio.pessoa_id).nome
+        %td= formulatio.tipo
+        %td= link_to 'Ver', formulatio
+        %td= link_to 'Editar', edit_formulatio_path(formulatio)
+        %td= link_to 'Apagar', formulatio, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Novo Formulario', new_formulatio_path

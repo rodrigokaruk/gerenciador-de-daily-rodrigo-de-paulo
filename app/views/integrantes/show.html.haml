@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Grupo:
+  =  Grupo.find(@integrante.grupo_id).name
+%p
+  %strong Membros:
+  = @integrante.membros
+= link_to 'Editar', edit_integrante_path(@integrante)
+|
+= link_to 'Voltar', integrantes_path

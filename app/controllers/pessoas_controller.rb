@@ -1,5 +1,6 @@
 class PessoasController < ApplicationController
 	Pessoa.connection
+	before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@pessoas = Pessoa.all
@@ -11,6 +12,9 @@ class PessoasController < ApplicationController
 
 	def show
 		@pessoa = Pessoa.find(pessoa_id)
+	end
+
+	def edit
 	end
 
 	def create
@@ -36,6 +40,23 @@ class PessoasController < ApplicationController
 			redirect_to pessoas_path
 		end
 	end
+
+	def update
+		respond_to do |format|
+			if @pessoa.update(pessoa_params)
+				format.html { redirect_to pessoas_path, notice: 'Pessoa atualizada.' }
+				format.json { render :index, status: :ok, location: pessoas_path }
+			else
+				format.html { render :edit }
+				format.json { render json: @pessoa.errors, status: :unprocessable_entity }
+			end
+		end
+	end
+
+   private
+	def set_pessoa
+      @pessoa = Pessoa.find(params[:id])
+    end
 
 	def pessoa_params
 		params.require(:pessoa).permit(:nome, :nascimento)

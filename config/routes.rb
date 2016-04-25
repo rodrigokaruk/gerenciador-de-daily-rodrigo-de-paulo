@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :formulatios
   resources :integrantes
+  
   root 'pages#home'
 
   get "pessoas" => "pessoas#index", as: :pessoas
