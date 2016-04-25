@@ -29,12 +29,7 @@
         return this.indexOf(s) > -1
     }
   }
-
-  $(function(){
-    change();
-    $("#formulatio_tipo")[0].setAttribute("onchange", "change();")
-  })
-
+  
   var change = function() {
     var lblPerguntaEntrada = $("#label_pergunta_entrada")[0];
     var lblPerguntaSaida = $("#label_pergunta_saida")[0];
@@ -51,3 +46,8 @@
       }
     }
   };
+
+  $(function(){
+    change();
+    $("#formulatio_tipo")[0].setAttribute("onchange", "change();")
+  })
