@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gerenciar Grupo</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grupo</th>
+      <th>Lider</th>
+      <th>Membros</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @integrantes.each do |integrante| %>
+      <tr>
+        <td><%= @grupos.find(integrante.grupo_id).name %></td>
+        <td><%= @pessoas.find(@grupos.find(integrante.grupo_id).lider).nome %></td>
+        <td><%= integrante.membros %></td>
+        <td><%= link_to 'Show', integrante %></td>
+        <td><%= link_to 'Edit', edit_integrante_path(integrante) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
